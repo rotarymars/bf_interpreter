@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <string>
 #include <fstream>
+#include <memory>
 class bf {
   public:
   bf(std::size_t size) {
@@ -11,8 +12,8 @@ class bf {
     delete[] mem;
   }
   private:
-  char *ptr;
-  char *mem;
+  std::shared_ptr<char> ptr;
+  std::shared_ptr<char[]> mem;
 };
 int main(int argc, char *argv[]) {
   if (argc != 2) {
