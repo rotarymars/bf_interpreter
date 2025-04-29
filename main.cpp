@@ -13,6 +13,10 @@ class bf {
   void run(const std::string &code) {
     it = code.begin();
     while (it != code.end()) {
+      if (mem.get() > ptr) {
+        printf("Error: Pointer out of bounds\n");
+        return;
+      }
       switch (*it) {
         case '+':
           ++(*ptr);
@@ -75,5 +79,6 @@ int main(int argc, char *argv[]) {
       }
     }
   }
+  printf("%s\n", code.c_str());
   interpreter.run(code);
 }
