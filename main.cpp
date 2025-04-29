@@ -32,4 +32,5 @@ int main(int argc, char *argv[]) {
       }
     }
   }
+  interpreter.run(code.c_str());
 }
