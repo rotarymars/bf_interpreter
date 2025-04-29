@@ -11,7 +11,7 @@ class bf {
     ptr = mem.get();
   }
   void run(const std::string &code) {
-    it = code.begin();
+    it = code.cbegin();
     while (it != code.end()) {
       if (mem.get() > ptr) {
         printf("Error: Pointer out of bounds\n");
