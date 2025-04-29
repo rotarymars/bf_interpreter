@@ -3,6 +3,7 @@
 #include <fstream>
 #include <memory>
 #include <stack>
+#include <utility>
 class bf {
   public:
   bf(std::size_t size) {
@@ -10,9 +11,47 @@ class bf {
     ptr = &mem[0];
   }
   void run(const std::string &code) {
+    it = code.begin();
+    while (it != code.end()) {
+      switch (*it) {
+        case '+':
+          ++(*ptr);
+          break;
+        case '-':
+          --(*ptr);
+          break;
+        case '>':
+          ++ptr;
+          break;
+        case '<':
+          --ptr;
+          break;
+        case '.':
+          putchar(*ptr);
+          break;
+        case ',':
+          *ptr = getchar();
+          break;
+        case '[':
+          loop.push(it);
+          break;
+        case ']':
+          if (*ptr) {
+            it = loop.top();
+          }
+          else {
+            loop.pop();
+          }
+          break;
+        default:
+          std::unreachable();
+      }
+      ++it;
+    }
   }
   private:
   char* ptr;
+  std::string::const_iterator it;
   std::shared_ptr<char[]> mem;
   std::stack<std::string::const_iterator> loop;
 };
