@@ -8,6 +8,8 @@ class bf {
     mem = std::make_shared<char[]>(size);
     ptr = &mem[0];
   }
+  void run(const std::string &code) {
+  }
   private:
   char* ptr;
   std::shared_ptr<char[]> mem;
@@ -32,5 +34,5 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-  interpreter.run(code.c_str());
+  interpreter.run(code);
 }
