@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <stack>
 class bf {
   public:
   bf(std::size_t size) {
@@ -13,6 +14,7 @@ class bf {
   private:
   char* ptr;
   std::shared_ptr<char[]> mem;
+  std::stack<std::string::const_iterator> loop;
 };
 int main(int argc, char *argv[]) {
   if (argc != 2) {
