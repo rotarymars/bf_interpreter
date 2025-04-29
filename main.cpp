@@ -19,6 +19,10 @@ int main(int argc, char *argv[]) {
   }
   bf interpreter(10000);
   std::ifstream file(argv[1]);
+  if (!file.is_open()) {
+    printf("Error: Could not open file %s\n", argv[1]);
+    return 1;
+  }
   std::string line;
   std::string code;
   while (std::getline(file, line)) {
