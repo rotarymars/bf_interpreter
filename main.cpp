@@ -7,8 +7,8 @@
 class bf {
   public:
   bf(std::size_t size) {
-    mem = std::make_shared<char[]>(size);
-    ptr = &mem[0];
+    mem = std::shared_ptr<char[]>(new char[size]);
+    ptr = mem.get();
   }
   void run(const std::string &code) {
     it = code.begin();
