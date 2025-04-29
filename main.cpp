@@ -5,11 +5,8 @@
 class bf {
   public:
   bf(std::size_t size) {
-    mem = new char[size];
-    ptr = mem;
-  }
-  ~bf() {
-    delete[] mem;
+    mem = std::make_shared<char[]>(size);
+    ptr = std::static_pointer_cast<char>(mem);
   }
   private:
   std::shared_ptr<char> ptr;
