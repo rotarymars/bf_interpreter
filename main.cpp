@@ -6,10 +6,10 @@ class bf {
   public:
   bf(std::size_t size) {
     mem = std::make_shared<char[]>(size);
-    ptr = std::static_pointer_cast<char>(mem);
+    ptr = &mem[0];
   }
   private:
-  std::shared_ptr<char> ptr;
+  char* ptr;
   std::shared_ptr<char[]> mem;
 };
 int main(int argc, char *argv[]) {
