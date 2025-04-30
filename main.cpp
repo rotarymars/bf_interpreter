@@ -6,16 +6,16 @@
 #include <utility>
 class bf {
   public:
-  bf(std::size_t size) {
-    mem = std::shared_ptr<char[]>(new char[size]);
+  bf(std::size_t size) : size(size) {
+    mem = std::shared_ptr<char[]>(new char[size]());
     ptr = mem.get();
   }
   void run(const std::string &code) {
     it = code.cbegin();
     while (it != code.end()) {
-      if (mem.get() > ptr) {
+      if (ptr < mem.get() || ptr >= mem.get() + size) {
         printf("Error: Pointer out of bounds\n");
-        return;
+        exit(1);
       }
       switch (*it) {
         case '+':
@@ -58,6 +58,7 @@ class bf {
   std::string::const_iterator it;
   std::shared_ptr<char[]> mem;
   std::stack<std::string::const_iterator> loop;
+  std::size_t size;
 };
 int main(int argc, char *argv[]) {
   if (argc != 2) {
@@ -71,7 +72,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
   std::string line;
-  std::string code;
+  std::string code = "";
   while (std::getline(file, line)) {
     for (const char &c : line) {
       if (c == '+' || c == '-' || c == '>' || c == '<' || c == '[' || c == ']' || c == '.' || c == ',') {
@@ -79,6 +80,5 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-  printf("%s\n", code.c_str());
   interpreter.run(code);
 }
