@@ -55,6 +55,7 @@ class bf {
           break;
         case '.':
           putchar(*ptr);
+          fflush(stdout);
           break;
         case ',':
           *ptr = getchar();
