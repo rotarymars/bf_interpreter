@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  bf interpreter(30000);
+  bf interpreter(1);
   std::ifstream file(argv[1]);
   if (!file.is_open()) {
     printf("Error: Could not open file %s\n", argv[1]);
