@@ -42,9 +42,6 @@ g++ -std=c++11 -o brainfuck main.cpp
 
 # Using clang++
 clang++ -std=c++11 -o brainfuck main.cpp
-
-# Using the provided Makefile (if available)
-make
 ```
 
 ## Usage
