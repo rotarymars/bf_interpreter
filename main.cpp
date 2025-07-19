@@ -4,6 +4,7 @@
 #include <memory>
 #include <stack>
 #include <utility>
+#include <algorithm>
 class bf {
   public:
   bf(std::size_t initial_size = 30000) : size(initial_size) {
@@ -66,13 +67,12 @@ class bf {
         case ']':
           if (*ptr) {
             it = loop.top();
-          }
-          else {
+          } else {
             loop.pop();
           }
           break;
         default:
-          std::unreachable();
+          break;
       }
       ++it;
     }
